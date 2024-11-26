@@ -11,13 +11,14 @@
       margin: 20px;
     }
     button {
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 8px 16px;
+      font-size: 14px;
       cursor: pointer;
       border: none;
       background-color: #333;
       color: white;
       border-radius: 5px;
+      margin: 5px;
     }
     button:hover {
       background-color: #555;
@@ -27,11 +28,17 @@
       font-size: 1.5em;
       color: #333;
     }
-    .number {
+    .number-box {
       margin: 10px 0;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      display: inline-block;
+      text-align: center;
+    }
+    .number {
+      font-size: 1.2em;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -50,13 +57,36 @@
       // Generate a random number
       const randomNumber = Math.floor(Math.random() * 100) + 1;
 
-      // Create a new div to display the number
+      // Create a new number box
+      const numberBox = document.createElement('div');
+      numberBox.classList.add('number-box');
+
+      // Create a div for the random number
       const numberElement = document.createElement('div');
       numberElement.classList.add('number');
-      numberElement.textContent = `Random Number: ${randomNumber}`;
+      numberElement.textContent = randomNumber;
 
-      // Append the new div to the container
-      container.appendChild(numberElement);
+      // Create increment button
+      const incrementButton = document.createElement('button');
+      incrementButton.textContent = 'Increment';
+      incrementButton.addEventListener('click', () => {
+        numberElement.textContent = parseInt(numberElement.textContent) + 1;
+      });
+
+      // Create decrement button
+      const decrementButton = document.createElement('button');
+      decrementButton.textContent = 'Decrement';
+      decrementButton.addEventListener('click', () => {
+        numberElement.textContent = parseInt(numberElement.textContent) - 1;
+      });
+
+      // Append number and buttons to the number box
+      numberBox.appendChild(numberElement);
+      numberBox.appendChild(incrementButton);
+      numberBox.appendChild(decrementButton);
+
+      // Append the number box to the container
+      container.appendChild(numberBox);
 
       // Remove old numbers if more than 5 are displayed
       if (container.children.length > 5) {
