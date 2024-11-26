@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Text Manipulation with Regex</title>
+   <style>
+       /* Basic reset */
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+ 
+       /* Styling for the header */
+       header {
+           background-color: #2881ff;
+           color: white;
+           padding: 20px;
+           text-align: center;
+       }
+ 
+       /* Styling for the main content */
+       main {
+           padding: 20px;
+           text-align: center;
+           background-color: #f9f9f9;
+       }
+ 
+       /* Styling for the textarea and input fields */
+       textarea, input {
+           margin-top: 10px;
+           padding: 10px;
+           border: 1px solid #ddd;
+           border-radius: 5px;
+           width: 100%;
+       }
+ 
+       button {
+           padding: 10px 20px;
+           background-color:#2881ff;
+           border: none;
+           border-radius: 5px;
+           color: white;
+           cursor: pointer;
+           margin: 10px;
+       }
+ 
+       button:hover {
+           background-color: darkred;
+       }
+ 
+       /* Styling for the footer */
+       footer {
+           text-align: center;
+           padding: 10px;
+           background-color: #333;
+           color: white;
+       }
+   </style>
+</head>
+<body>
+   <header>
+       <h1>Text Manipulation with Regular Expressions</h1>
+   </header>
+   <main>
+       <div class="container">
+           <textarea id="inputText" rows="10" cols="50" placeholder="Enter text here..."></textarea>
+           <br>
+           <label for="searchPattern">Search Pattern:</label>
+           <input type="text" id="searchPattern">
+           <br>
+           <label for="replacePattern">Replace With:</label>
+           <input type="text" id="replacePattern">
+           <br>
+           <button onclick="performSearch()">Search</button>
+           <button onclick="performReplace()">Replace</button>
+           <button onclick="performFormatting()">Format</button>
+           <br><br>
+           <h2>Result</h2>
+           <textarea id="resultText" rows="10" cols="50" readonly></textarea>
+       </div>
+   </main>
+   <footer>
+       <p>&copy; 2024 Text Manipulation Example</p>
+   </footer>
+   <script>
+       // Function to perform search using regex
+       function performSearch() {
+           const inputText = document.getElementById('inputText').value;
+           const searchPattern = document.getElementById('searchPattern').value;
+           const resultText = document.getElementById('resultText');
+ 
+           try {
+               const regex = new RegExp(searchPattern, 'g');
+               const matches = inputText.match(regex);
+               resultText.value = matches ? matches.join('\n') : 'No matches found.';
+           } catch (e) {
+               resultText.value = 'Invalid regular expression.';
+           }
+       }
+ 
+       // Function to perform replace using regex
+       function performReplace() {
+           const inputText = document.getElementById('inputText').value;
+           const searchPattern = document.getElementById('searchPattern').value;
+           const replacePattern = document.getElementById('replacePattern').value;
+           const resultText = document.getElementById('resultText');
+ 
+           try {
+               const regex = new RegExp(searchPattern, 'g');
+               const replacedText = inputText.replace(regex, replacePattern);
+               resultText.value = replacedText;
+           } catch (e) {
+               resultText.value = 'Invalid regular expression.';
+           }
+       }
+ 
+       // Function to perform formatting (e.g., capitalizing first letter of each word)
+       function performFormatting() {
+           const inputText = document.getElementById('inputText').value;
+           const resultText = document.getElementById('resultText');
+ 
+           // Example formatting: Capitalize the first letter of each word
+           const formattedText = inputText.replace(/\b\w/g, char => char.toUpperCase());
+           resultText.value = formattedText;
+       }
+   </script>
+</body>
+</html>

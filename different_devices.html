@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Adaptive Landing Page</title>
+   <style>
+       /* Basic reset */
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+       /* Styling for the header */
+       header {
+           background-color: lightcoral;
+           color: white;
+           padding: 20px;
+           text-align: center;
+       }
+       /* Styling for the main content */
+       main {
+           padding: 20px;
+           background-color: #f9f9f9;
+       }
+       /* Styling for the hero section */
+       #hero {
+           text-align: center;
+           margin-bottom: 20px;
+       }
+       #heroTitle {
+           font-size: 2em;
+           margin-bottom: 10px;
+       }
+       #heroDescription {
+           font-size: 1.2em;
+       }
+       /* Styling for the features section */
+       #features {
+           margin-bottom: 20px;
+       }
+       #featureList {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 10px;
+       }
+       .feature {
+           background-color: white;
+           padding: 20px;
+           border: 1px solid #ddd;
+           border-radius: 5px;
+           flex: 1;
+       }
+       /* Styling for the contact form */
+       #contactForm {
+           display: flex;
+           flex-direction: column;
+       }
+       #contactForm label {
+           margin-top: 10px;
+       }
+       #contactForm input,
+       #contactForm textarea {
+           margin-top: 5px;
+           padding: 10px;
+           border: 1px solid #ddd;
+           border-radius: 5px;
+       }
+       #contactForm button {
+           margin-top: 10px;
+           padding: 10px 20px;
+           background-color: lightcoral;
+           border: none;
+           border-radius: 5px;
+           color: white;
+           cursor: pointer;
+       }
+       #contactForm button:hover {
+           background-color: darkred;
+       }
+       /* Styling for the footer */
+       footer {
+           text-align: center;
+           padding: 10px;
+           background-color: #333;
+           color: white;
+       }
+       /* Media Queries for responsiveness */
+       /* For tablets and larger devices */
+       @media (min-width: 768px) {
+           #featureList {
+               flex-direction: row;
+           }
+       }
+       /* For desktops and larger devices */
+       @media (min-width: 1024px) {
+           #hero {
+               text-align: left;
+           }
+           #heroTitle {
+               font-size: 2.5em;
+           }
+           #heroDescription {
+               font-size: 1.5em;
+           }
+       }
+   </style>
+</head>
+<body>
+   <header>
+       <h1>Welcome to Our Service</h1>
+       <p id="deviceType"></p>
+   </header>
+   <main>
+       <section id="hero">
+           <h2 id="heroTitle">Discover Our Solutions</h2>
+           <p id="heroDescription">We provide top-notch solutions tailored to your needs.</p>
+       </section>
+       <section id="features">
+           <h2>Features</h2>
+           <div id="featureList">
+               <!-- Features will be dynamically inserted here -->
+           </div>
+       </section>
+       <section id="contact">
+           <h2>Contact Us</h2>
+           <p>Get in touch with us for more information.</p>
+           <form id="contactForm">
+               <label for="name">Name:</label>
+               <input type="text" id="name" name="name" required>
+               <label for="email">Email:</label>
+               <input type="email" id="email" name="email" required>
+               <label for="message">Message:</label>
+               <textarea id="message" name="message" rows="4" required></textarea>
+               <button type="submit">Send Message</button>
+           </form>
+       </section>
+   </main>
+   <footer>
+       <p>&copy; 2024 Our Service</p>
+   </footer>
+   <script>
+       // Function to detect device type
+       function detectDevice() {
+           var deviceTypeElement = document.getElementById('deviceType');
+           var featureList = document.getElementById('featureList');
+ 
+           if (window.innerWidth < 768) {
+               deviceTypeElement.textContent = "You are using a mobile device.";
+               // Example mobile features
+               featureList.innerHTML = `
+                   <div class="feature">Mobile Feature 1</div>
+                   <div class="feature">Mobile Feature 2</div>
+               `;
+           } else if (window.innerWidth < 1024) {
+               deviceTypeElement.textContent = "You are using a tablet.";
+               // Example tablet features
+               featureList.innerHTML = `
+                   <div class="feature">Tablet Feature 1</div>
+                   <div class="feature">Tablet Feature 2</div>
+                   <div class="feature">Tablet Feature 3</div>
+               `;
+           } else {
+               deviceTypeElement.textContent = "You are using a desktop.";
+               // Example desktop features
+               featureList.innerHTML = `
+                   <div class="feature">Desktop Feature 1</div>
+                   <div class="feature">Desktop Feature 2</div>
+                   <div class="feature">Desktop Feature 3</div>
+                   <div class="feature">Desktop Feature 4</div>
+               `;
+           }
+       }
+       // Detect device type on load and resize
+       window.onload = detectDevice;
+       window.onresize = detectDevice;
+   </script>
+</body>
+</html>

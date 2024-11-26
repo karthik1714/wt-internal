@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .post-title {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .post-author {
+      font-size: 1em;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .post-content {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .comment-section {
+      margin-top: 30px;
+    }
+    .comment-box {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .submit-btn {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #555;
+    }
+    .comments {
+      margin-top: 20px;
+    }
+    .comment {
+      background-color: #f1f1f1;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+    .comment-author {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Simple Blog</h1>
+  </header>
+
+  <div class="container">
+    <!-- Blog Post -->
+    <h2 class="post-title">How to Learn Web Development</h2>
+    <p class="post-author">By John Doe - 25th November 2024</p>
+    <p class="post-content">
+      Web development is a vast field that includes front-end and back-end development. In this post, we’ll discuss
+      the basic steps to get started with web development. Whether you are a complete beginner or have some
+      experience, these steps will help you understand the fundamentals of web development.
+    </p>
+
+    <!-- Comment Section -->
+    <div class="comment-section">
+      <h3>Leave a Comment:</h3>
+      <textarea class="comment-box" id="comment-box" placeholder="Write your comment here..."></textarea><br>
+      <button class="submit-btn" onclick="submitComment()">Submit</button>
+    </div>
+
+    <div class="comments" id="comments-section">
+      <h3>Comments:</h3>
+      <!-- Comments will be displayed here -->
+    </div>
+  </div>
+
+  <script>
+    // Function to submit a comment
+    function submitComment() {
+      var commentBox = document.getElementById('comment-box');
+      var commentText = commentBox.value.trim();
+
+      // Check if comment is not empty
+      if (commentText !== '') {
+        var commentsSection = document.getElementById('comments-section');
+
+        // Create a new comment div
+        var newComment = document.createElement('div');
+        newComment.classList.add('comment');
+        
+        // Set the comment content
+        newComment.innerHTML = `<p class="comment-author">Anonymous:</p><p>${commentText}</p>`;
+
+        // Append the new comment to the comments section
+        commentsSection.appendChild(newComment);
+
+        // Clear the comment box after submission
+        commentBox.value = '';
+      } else {
+        alert('Please write a comment before submitting.');
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Shopping Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="text-center">
+  <header class="bg-red-400 text-white p-4 ">
+    <h1>Sample Shopping Cart</h1>
+  </header>
+  <div class="flex flex-col md:flex-row justify-center p-4 space-y-4 md:space-y-0 md:space-x-4">
+    <div class="border p-4 w-full md:w-1/2">
+      <h2>Products</h2>
+      <p>Product 1 <button class="bg-red-400 text-white px-2 py-1 mt-1" onclick="addToCart(10)">Add to Cart (Rs. 10)</button></p>
+      <p>Product 2 <button class="bg-red-400 text-white px-2 py-1 mt-1" onclick="addToCart(15)">Add to Cart (Rs. 15)</button></p>
+      <p>Product 3 <button class="bg-red-400 text-white px-2 py-1 mt-1" onclick="addToCart(20)">Add to Cart (Rs. 20)</button></p>
+    </div>
+    <div class="p-4 w-full md:w-1/2">
+      <h2>Your Cart</h2>
+      <p>Total Price: Rs. <span id="total-price">0</span></p>
+    </div>
+  </div>
+  <footer class="bg-gray-800 text-white p-2">
+    © 2024 Shopping Cart Example
+  </footer>
+  <script>
+    let totalPrice = 0;
+
+    function addToCart(price) {
+      totalPrice += price;
+      document.getElementById("total-price").innerText = totalPrice;
+    }
+  </script>
+</body>
+</html>
